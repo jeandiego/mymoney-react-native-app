@@ -1,12 +1,18 @@
 import React from 'react';
-
-import { SafeAreaView, Text } from 'react-native';
+import { StatusBar } from 'react-native';
+import GlobalStyle from './global/styles';
+import { Routes } from './routes';
 
 const App = () => {
   return (
-    <SafeAreaView>
-      <Text style={{ fontFamily: 'Poppins-Bold' }}>Ola, mundo</Text>
-    </SafeAreaView>
+    <GlobalStyle>
+      <StatusBar
+        barStyle="light-content"
+        translucent
+        backgroundColor="transparent"
+      />
+      <Routes />
+    </GlobalStyle>
   );
 };
 

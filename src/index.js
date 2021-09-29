@@ -5,7 +5,7 @@ import { SafeAreaView, Text } from 'react-native';
 const App = () => {
   return (
     <SafeAreaView>
-      <Text>Ola, mundo</Text>
+      <Text style={{ fontFamily: 'Poppins-Bold' }}>Ola, mundo</Text>
     </SafeAreaView>
   );
 };

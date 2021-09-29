@@ -1,0 +1,10 @@
+{
+  "error": {},
+  "translation": {
+    "REGION": "BR",
+    "REGION_MASK": "pt-BR",
+    "MONEY": {
+      "CURRENCY": "R$ "
+    }
+  }
+}

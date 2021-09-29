@@ -1,0 +1,43 @@
+{
+  "styles": {
+    "prefix": "stl",
+    "body": [
+      "import styled from 'styled-components/native';",
+      "",
+      "export const ${1:Container} = styled.${2:View}`",
+      "  ${3}",
+      "`;",
+      ""
+    ],
+    "description": "Create React Native Styled Components file"
+  },
+  "componentFunctionalContainer": {
+    "prefix": "slc",
+    "body": [
+      "import React from 'react';",
+      "import ${1:${TM_DIRECTORY/^.*(\\/|\\\\)([^(\\/|\\\\)]+)$/$2/}}View from './view';",
+      "",
+      "const ${1:${TM_DIRECTORY/^.*(\\/|\\\\)([^(\\/|\\\\)]+)$/$2/}} = () => {",
+      "  return <${1:${TM_DIRECTORY/^.*(\\/|\\\\)([^(\\/|\\\\)]+)$/$2/}}View />;",
+      "}",
+      "",
+      "export default ${1:${TM_DIRECTORY/^.*(\\/|\\\\)([^(\\/|\\\\)]+)$/$2/}};"
+    ],
+    "description": "Create React Native Functional Component"
+  },
+  "componentFunctionalView": {
+    "prefix": "slv",
+    "body": [
+      "import React from 'react';",
+      "import Container from './styles';",
+      "",
+      "const ${1:${TM_DIRECTORY/^.*(\\/|\\\\)([^(\\/|\\\\)]+)$/$2/}}View = () => {",
+      "  return <Container />;",
+      "};",
+      "",
+      "export default ${1:${TM_DIRECTORY/^.*(\\/|\\\\)([^(\\/|\\\\)]+)$/$2/}}View;",
+      "",
+    ],
+    "description": "Create React Native Functional Component"
+  }
+}

@@ -4,7 +4,26 @@
     "REGION": "BR",
     "REGION_MASK": "pt-BR",
     "MONEY": {
-      "CURRENCY": "R$ "
-    }
+      "CURRENCY": "R$ ",
+      "TYPE_INCOME": "Receitas",
+      "TYPE_WITHDRAW": "Despesas"
+    },
+    "HOME": {
+      "RELEASES": "Últimos lançamentos"
+    },
+    "SIGNIN": {
+      "DESCRIPTION": " Controle suas \n finanças de maneira \n rápida e prática",
+      "INSTRUCTIONS": "Crie sua conta de um jeito \n fácil e rápido",
+      "USER_PLACEHOLDER": "Digite seu nome",
+      "USER_LABEL": "Seu nome",
+      "EMAIL_LABEL": "Digite seu e-mail",
+      "EMAIL_PLACEHOLDER": "seuemail@email.com"
+    },
+    "WELCOME": {
+      "BUTTON_START": "Começar agora"
+    },
+    "SIGNIN_BUTTON_REGISTER": "Registrar",
+    "SIGNIN_WELCOME": "Bem vindo",
+    "SIGNIN_DESCRIPTION": "Faça seu cadastro e comece a usar agora mesmo."
   }
 }

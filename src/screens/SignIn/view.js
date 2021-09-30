@@ -1,0 +1,109 @@
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { RFValue } from 'react-native-responsive-fontsize';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
+import ButtonHeader from '~/components/ButtonHeader';
+import GlobalContainer from '~/components/Container';
+import MoneyButton from '~/components/MoneyButton';
+import MoneyInput from '~/components/MoneyInput';
+import MoneyText from '~/components/MoneyText';
+import MoneyContent from '~/components/MoneyView/Content';
+import MoneyFooter from '~/components/MoneyView/Footer';
+import ArrowSvg from '~/assets/svgs/arrow-left.svg';
+
+const SignInView = ({
+  isFocused,
+  setUsername,
+  setUserEmail,
+  username,
+  userEmail,
+  onPress,
+}) => {
+  const { t } = useTranslation();
+  const insets = useSafeAreaInsets();
+  const navigation = useNavigation();
+  const [focus, setFocus] = useState({
+    name: false,
+    email: false,
+  });
+
+  const goBack = () => {
+    navigation.goBack();
+  };
+
+  return (
+    <GlobalContainer background="background">
+      <MoneyContent
+        background="primary"
+        mTop={-insets.top}
+        pTop={56}
+        pBottom={24}
+        pHorizontal={16}
+        flexDir="column">
+        <ButtonHeader onPress={goBack}>
+          <ArrowSvg width={24} height={24} fill="white" />
+        </ButtonHeader>
+        <MoneyContent flexDir="column" pTop={16}>
+          <MoneyText
+            color="shape"
+            size={RFValue(24)}
+            fontWeight="bold"
+            pBottom={8}>
+            {t('SIGNIN_WELCOME')}
+          </MoneyText>
+          <MoneyText size={RFValue(12)} color="shape">
+            {t('SIGNIN_DESCRIPTION')}
+          </MoneyText>
+        </MoneyContent>
+      </MoneyContent>
+
+      <MoneyContent flexDir="column" flex={1} pHorizontal={16} pVertical={24}>
+        <MoneyText size={14} color={isFocused ? 'primary' : 'text'}>
+          {t('SIGNIN.USER_LABEL')}
+        </MoneyText>
+        <MoneyInput
+          value={username}
+          isFocused={focus.name}
+          placeholder={t('SIGNIN.USER_PLACEHOLDER')}
+          onFocus={() => setFocus({ ...focus, name: true })}
+          onBlur={() => setFocus({ ...focus, name: false })}
+          onChangeText={setUsername}
+          autoCompleteType="name"
+        />
+        <MoneyText size={14} color={isFocused ? 'primary' : 'text'} pTop={36}>
+          {t('SIGNIN.EMAIL_LABEL')}
+        </MoneyText>
+        <MoneyInput
+          value={userEmail}
+          isFocused={focus.email}
+          placeholder={t('SIGNIN.EMAIL_PLACEHOLDER')}
+          onFocus={() => setFocus({ ...focus, email: true })}
+          onBlur={() => setFocus({ ...focus, email: false })}
+          onChangeText={setUserEmail}
+          autoCapitalize="none"
+          autoCompleteType="email"
+          keyboardType="email-address"
+        />
+      </MoneyContent>
+      <MoneyFooter
+        justify="flex-end"
+        width={100}
+        height={10}
+        flexDir="column"
+        pHorizontal={16}>
+        <MoneyButton
+          background="primary"
+          pVertical={16}
+          color="shape"
+          size={RFValue(16)}
+          fontWeight="medium"
+          onPress={onPress}>
+          {t('SIGNIN_BUTTON_REGISTER')}
+        </MoneyButton>
+      </MoneyFooter>
+    </GlobalContainer>
+  );
+};
+
+export default SignInView;

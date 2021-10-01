@@ -27,7 +27,6 @@ function AuthProvider({ children }) {
 
   async function loadUserStorageData() {
     const userStoraged = await AsyncStorage.getItem(userStorageKey);
-    console.log(userStoraged);
 
     if (userStoraged) {
       const userLogged = JSON.parse(userStoraged);
@@ -41,7 +40,8 @@ function AuthProvider({ children }) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, signInWithEmail, loadingUserStorage }}>
+    <AuthContext.Provider
+      value={{ user, loadingUserStorage, setUser, signInWithEmail }}>
       {children}
     </AuthContext.Provider>
   );

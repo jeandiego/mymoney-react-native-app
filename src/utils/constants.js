@@ -1,1 +1,1 @@
-export const userStorageKey = '@mymoney:user4';
+export const userStorageKey = '@mymoney:user5';

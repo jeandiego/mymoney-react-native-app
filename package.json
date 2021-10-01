@@ -22,6 +22,7 @@
     "react": "17.0.2",
     "react-i18next": "^11.12.0",
     "react-native": "0.65.1",
+    "react-native-currency-input": "^1.0.1",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-modalize": "^2.0.8",
     "react-native-portalize": "^1.0.7",

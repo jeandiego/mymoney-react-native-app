@@ -7,7 +7,5 @@ export const Container = styled.View`
   padding-left: ${(p) => p.pLeft || p.pHorizontal || 0}px;
   padding-right: ${(p) => p.pRight || p.pHorizontal || 0}px;
   padding-bottom: ${(p) => p.pBottom || p.pVertical || 0}px;
-  padding-top: ${(p) => p.pTop || p.pVertical || 0}px;
-  padding-bottom: ${(p) => p.safeArea.bottom || 0}px;
   padding-top: ${(p) => p.safeArea.top || 0}px;
 `;

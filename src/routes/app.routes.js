@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import React, { useContext, useRef } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ThemeContext } from 'styled-components';
 import Home from '~/screens/Home';
@@ -10,7 +10,7 @@ import AddTabButton from '~/components/AddTabButton';
 
 const Tab = createBottomTabNavigator();
 
-export function AppRoutes() {
+export function AppRoutes({ openExpenseModal }) {
   const {
     colors: { primary, text },
   } = useContext(ThemeContext);
@@ -45,31 +45,20 @@ export function AppRoutes() {
         tabBarInactiveTintColor: text,
         tabBarShowLabel: false,
       })}>
-      <Tab.Screen
-        name="Home"
-        component={Home}
-        options={{ animationEnabled: true }}
-      />
+      <Tab.Screen name="Home" component={Home} />
       <Tab.Screen
         name="Create"
-        component={AddTabButton}
+        component={Fragment}
         listeners={{
           tabPress: (e) => {
             e.preventDefault();
           },
         }}
-        options={() => ({
-          animationEnabled: true,
-          tabBarIcon: () => {
-            const modalizeRef = useRef(null);
-
-            const onOpen = () => {
-              modalizeRef?.current.open();
-            };
-
-            return <AddTabButton onPress={onOpen} modalRef={modalizeRef} />;
-          },
-        })}
+        options={{
+          tabBarIcon: () => (
+            <AddTabButton openExpenseModal={openExpenseModal} />
+          ),
+        }}
       />
       <Tab.Screen name="Releases" component={Releases} />
     </Tab.Navigator>

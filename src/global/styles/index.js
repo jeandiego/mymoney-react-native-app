@@ -1,5 +1,5 @@
 import React from 'react';
-import { useColorScheme } from 'react-native';
+import { StatusBar, useColorScheme } from 'react-native';
 import { ThemeProvider } from 'styled-components';
 import { darkTheme, lightTheme } from './theme';
 
@@ -9,8 +9,14 @@ const GlobalStyle = (props) => {
   return (
     <ThemeProvider
       theme={{ colors: isOnDarkMode ? darkTheme : lightTheme }}
-      {...props}
-    />
+      {...props}>
+      <StatusBar
+        barStyle="light-content"
+        translucent
+        backgroundColor="transparent"
+      />
+      {props.children}
+    </ThemeProvider>
   );
 };
 

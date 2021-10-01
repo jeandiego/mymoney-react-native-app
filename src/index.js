@@ -1,28 +1,27 @@
-import React from 'react';
-import { StatusBar } from 'react-native';
-import { Host } from 'react-native-portalize';
+import React, { useRef } from 'react';
 import GlobalStyle from './global/styles';
 import { Routes } from './routes';
 import './configs/reactotron';
 import '~/lang';
 import { AuthProvider } from '~/hooks/auth';
-import { GlobalProvider } from './context';
+import GlobalProvider from './providers';
+import NewExpenseModal from './components/NewExpenseModal';
 
 const App = () => {
+  const modalizeRef = useRef(null);
+
+  const onOpen = () => {
+    modalizeRef?.current.open();
+  };
+
   return (
     <GlobalStyle>
-      <Host>
-        <StatusBar
-          barStyle="light-content"
-          translucent
-          backgroundColor="transparent"
-        />
+      <GlobalProvider>
         <AuthProvider>
-          <GlobalProvider>
-            <Routes />
-          </GlobalProvider>
+          <Routes openExpenseModal={onOpen} />
+          <NewExpenseModal modalRef={modalizeRef} />
         </AuthProvider>
-      </Host>
+      </GlobalProvider>
     </GlobalStyle>
   );
 };

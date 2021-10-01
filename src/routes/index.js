@@ -8,12 +8,16 @@ import { AppRoutes } from './app.routes';
 
 import { useAuth } from '../hooks/auth';
 
-export function Routes() {
+export function Routes({ openExpenseModal }) {
   const { user } = useAuth();
 
   return (
     <NavigationContainer ref={navigationRef}>
-      {user._id ? <AppRoutes /> : <AuthRoutes />}
+      {user._id ? (
+        <AppRoutes openExpenseModal={openExpenseModal} />
+      ) : (
+        <AuthRoutes />
+      )}
     </NavigationContainer>
   );
 }

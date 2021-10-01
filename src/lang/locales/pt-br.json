@@ -24,6 +24,20 @@
     },
     "SIGNIN_BUTTON_REGISTER": "Registrar",
     "SIGNIN_WELCOME": "Bem vindo",
-    "SIGNIN_DESCRIPTION": "Faça seu cadastro e comece a usar agora mesmo."
+    "SIGNIN_DESCRIPTION": "Faça seu cadastro e comece a usar agora mesmo.",
+    "ADD": {
+      "PLACEHOLDER_VALUE": "R$ 0,00",
+      "ITEM": "Descrição",
+      "PLACEHOLDER_ITEM": "Adicione a descrição do lançamento",
+      "ADDITIONAL_INFO": "Informações adicionais",
+      "PLACEHOLDER_ADDITIONAL_INFO": "Adicionar observação",
+      "DATE": "Data",
+      "PLACEHOLDER_DATE": "30/09/2021",
+      "TITLE": "Adicionar uma despesa",
+      "BUTTON_ADD": "Adicionar despesa"
+    },
+    "RELEASES": {
+      "TITLE": "Seus lançamentos"
+    }
   }
 }

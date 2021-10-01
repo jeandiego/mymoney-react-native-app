@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-no-bind */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Alert } from 'react-native';
 import { useAuth } from '~/hooks/auth';
 import SignInView from './view';
@@ -16,8 +16,6 @@ const SignIn = () => {
       Alert.alert('Nao foi possível conectar com seu email');
     }
   }
-
-  useEffect(() => {}, []);
 
   return (
     <SignInView

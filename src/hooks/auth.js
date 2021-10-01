@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { userStorageKey } from '~/utils/constants';
-import api from '~/api';
+import api, { configureAuthHeader } from '~/api';
 
 export const AuthContext = createContext([]);
 
@@ -38,6 +38,12 @@ function AuthProvider({ children }) {
   useEffect(() => {
     loadUserStorageData();
   }, []);
+
+  useEffect(() => {
+    if (user) {
+      configureAuthHeader(user?.token);
+    }
+  }, [user]);
 
   return (
     <AuthContext.Provider

@@ -3,6 +3,8 @@ import { Modalize } from 'react-native-modalize';
 import { useTranslation } from 'react-i18next';
 import { ThemeContext } from 'styled-components';
 import { RFValue } from 'react-native-responsive-fontsize';
+import dayjs from 'dayjs';
+import { Alert } from 'react-native';
 import {
   ContentView,
   FooterView,
@@ -10,13 +12,17 @@ import {
   HeaderWrapper,
   InputView,
   ContentWrapper,
+  CurrencyInputMoney,
 } from './styles';
 import MoneyText from '../MoneyText';
 import MoneyInput from '../MoneyInput';
 import MoneyButton from '../MoneyButton';
+import { createNewExpense } from '~/controller/expenseController';
+import { GlobalContext } from '~/providers';
 
 const NewExpenseModal = ({ modalRef }) => {
   const themeContext = useContext(ThemeContext);
+  const { expenses, setExpenses } = useContext(GlobalContext);
   const { t } = useTranslation();
   const [focus, setFocus] = useState({
     value: false,
@@ -24,6 +30,32 @@ const NewExpenseModal = ({ modalRef }) => {
     date: false,
     additional: false,
   });
+  const [value, setValue] = useState('');
+  const [item, setItem] = useState('');
+  const [date, setDate] = useState(dayjs().format('YYYY-MM-DD'));
+  const [notes, setNotes] = useState();
+
+  const handleNewExpense = async () => {
+    const results = await createNewExpense({
+      date,
+      item,
+      value,
+      additionalInfo: { notes },
+    });
+
+    if (results.shouldContinue) {
+      setExpenses({
+        ...expenses,
+        date,
+        item,
+        value,
+        additionalInfo: { notes },
+      });
+      modalRef.current?.close();
+    } else {
+      Alert.alert('Algo de errado');
+    }
+  };
 
   return (
     <Modalize
@@ -41,14 +73,22 @@ const NewExpenseModal = ({ modalRef }) => {
         <HeaderView>
           <HeaderWrapper>
             <MoneyText color="shape">{t('ADD.TITLE')}</MoneyText>
-            <MoneyInput
-              placeholder={t('ADD.PLACEHOLDER_VALUE')}
-              size={48}
+
+            <CurrencyInputMoney
+              size={42}
               alignText="center"
+              placeholder={t('ADD.PLACEHOLDER_VALUE')}
               placeColor="opacityWhite"
               color="shape"
               weight="bold"
-              borderBottom={0.1}
+              value={value}
+              onChangeValue={setValue}
+              prefix="R$"
+              delimiter="."
+              separator=","
+              precision={2}
+              minValue={0}
+              multiline
               onFocus={() => setFocus({ ...focus, value: true })}
               onBlur={() => setFocus({ ...focus, value: false })}
               keyboardType="numeric"
@@ -63,6 +103,8 @@ const NewExpenseModal = ({ modalRef }) => {
               {t('ADD.ITEM')}
             </MoneyText>
             <MoneyInput
+              value={item}
+              onChangeText={setItem}
               placeholder={t('ADD.PLACEHOLDER_ITEM')}
               isFocused={focus.item}
               onFocus={() => setFocus({ ...focus, item: true })}
@@ -73,7 +115,11 @@ const NewExpenseModal = ({ modalRef }) => {
             <MoneyText size={14} fontWeight="medium" color="text">
               {t('ADD.DATE')}
             </MoneyText>
-            <MoneyInput placeholder={t('ADD.PLACEHOLDER_DATE')} />
+            <MoneyInput
+              placeholder={t('ADD.PLACEHOLDER_DATE')}
+              value={date}
+              onChangeText={setDate}
+            />
           </InputView>
           <InputView>
             <MoneyText size={14} fontWeight="medium" color="text">
@@ -81,6 +127,8 @@ const NewExpenseModal = ({ modalRef }) => {
             </MoneyText>
             <MoneyInput
               // multiline
+              value={notes}
+              onChangeText={setNotes}
               isFocused={focus.additional}
               onFocus={() => setFocus({ ...focus, additional: true })}
               onBlur={() => setFocus({ ...focus, additional: false })}
@@ -95,7 +143,7 @@ const NewExpenseModal = ({ modalRef }) => {
             color="shape"
             size={RFValue(16)}
             fontWeight="medium"
-            onPress={() => {}}>
+            onPress={handleNewExpense}>
             {t('ADD.BUTTON_ADD')}
           </MoneyButton>
         </FooterView>

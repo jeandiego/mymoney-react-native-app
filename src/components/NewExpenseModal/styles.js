@@ -1,5 +1,7 @@
-import { KeyboardAvoidingView } from 'react-native';
+import { KeyboardAvoidingView, Platform } from 'react-native';
+import CurrencyInput from 'react-native-currency-input';
 import styled from 'styled-components/native';
+import { fonts } from '~/global/styles/fonts';
 
 export const HeaderView = styled.View`
   justify-content: center;
@@ -30,3 +32,16 @@ export const FooterView = styled.View`
 `;
 
 export const ContentWrapper = styled(KeyboardAvoidingView)``;
+
+export const CurrencyInputMoney = styled(CurrencyInput).attrs((p) => ({
+  placeholderTextColor: p.theme.colors[p.placeColor] || p.theme.colors.opacity,
+}))`
+  width: 100%;
+  background-color: ${(p) => p.theme.colors[p.background] || 'transparent'};
+  color: ${(p) => p.theme.colors[p.color] || p.theme.colors.title};
+  padding: ${Platform.OS === 'ios' ? 12 : 10}px;
+  padding-left: 0;
+  text-align: ${(p) => (p.alignText ? p.alignText : 'left')};
+  font-family: ${(p) => fonts[p.weight] || 'Poppins-Regular'};
+  font-size: ${(p) => p.size || 16}px;
+`;

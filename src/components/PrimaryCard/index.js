@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { GlobalContext } from '~/providers';
+import { valueToPrice } from '~/utils/value';
 import MoneyText from '../MoneyText';
 import MoneyContent from '../MoneyView/Content';
 
@@ -8,24 +10,29 @@ import { Container } from './styles';
 
 const PrimaryCard = ({ item, title }) => {
   const { t } = useTranslation();
+  const { expenses } = useContext(GlobalContext);
+
+  const totalExpenses = expenses?.reduce(
+    (totalExpense, expense) => totalExpense + expense.value,
+    0,
+  );
 
   return (
     <Container>
       <MoneyContent
-        background="shape"
-        flexDir="column"
-        justify="space-around"
-        pLeft={16}
-        pTop={16}>
-        <item.icon width={34} height={34} />
-        <MoneyContent flexDir="column" pTop={24} pBottom={24}>
-          <MoneyText color="text" fontWeight="regular" size={14} pBottom={8}>
-            {t(`MONEY.TYPE_${title}`)}
-          </MoneyText>
-          <MoneyText fontWeight="medium" size={RFValue(20)}>
-            $ 40.384,80
-          </MoneyText>
-        </MoneyContent>
+        flexDir="row"
+        justify="space-between"
+        alignItem="center"
+        pVertical={8}>
+        <MoneyText color="text" fontWeight="medium" size={18}>
+          {t(`MONEY.TYPE_${title}`)}
+        </MoneyText>
+        <item.icon width={40} height={40} />
+      </MoneyContent>
+      <MoneyContent flexDir="column" pVertical={8}>
+        <MoneyText fontWeight="medium" size={RFValue(32)}>
+          {valueToPrice(totalExpenses)}
+        </MoneyText>
       </MoneyContent>
     </Container>
   );

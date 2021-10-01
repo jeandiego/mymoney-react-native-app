@@ -3,6 +3,6 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   width: 100%;
-  height: ${RFPercentage(34)}px;
+  height: ${RFPercentage(24)}px;
   background-color: ${({ theme }) => theme.colors.primary};
 `;

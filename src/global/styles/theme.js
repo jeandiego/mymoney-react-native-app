@@ -3,6 +3,7 @@ export const common = {
   black: '#000000',
 
   opacity: 'rgba(0,0,0,0.1)',
+  opacityWhite: 'rgba(255,255,255,0.56)',
 };
 
 export const lightTheme = {

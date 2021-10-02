@@ -2,9 +2,9 @@ import api from '~/api';
 
 export async function createNewExpense(expense) {
   try {
-    await api.post(`expenses`, expense);
+    const response = await api.post(`expenses`, expense);
 
-    return { shouldContinue: true };
+    return { shouldContinue: true, id: response.data };
   } catch (error) {
     return { shouldContinue: false };
   }
@@ -25,6 +25,16 @@ export async function deleteExpense(id) {
     const response = await api.delete(`/expenses/${id}`);
 
     return response;
+  } catch (error) {
+    return console.log(error);
+  }
+}
+
+export async function editExpense(id) {
+  try {
+    const response = await api.put(`expense/${id}`);
+
+    return console.log(response);
   } catch (error) {
     return console.log(error);
   }

@@ -1,9 +1,10 @@
 /* eslint-disable no-underscore-dangle */
-import React, { useContext } from 'react';
+import React from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { FlatList } from 'react-native';
+import { Portal } from 'react-native-portalize';
 import Header from '~/components/Header';
 import PrimaryCard from '~/components/PrimaryCard';
 import { Container } from './styles';
@@ -11,10 +12,9 @@ import { types } from '~/utils/types';
 import MoneyText from '~/components/MoneyText';
 import MoneyContent from '~/components/MoneyView/Content';
 import SecondaryCard from '~/components/SecondaryCard';
-import { GlobalContext } from '~/providers';
+import OptionsModal from '~/components/OptionsModal';
 
-const HomeView = ({ expenses, handleDeleteExpense }) => {
-  const { refresh, setExpenses } = useContext(GlobalContext);
+const HomeView = ({ expenses, handleExpense, modalRef, expense }) => {
   const insets = useSafeAreaInsets();
   const { t } = useTranslation();
 
@@ -40,17 +40,19 @@ const HomeView = ({ expenses, handleDeleteExpense }) => {
         <FlatList
           showsVerticalScrollIndicator={false}
           data={expenses}
-          extraData={refresh}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item._id}
           renderItem={({ item }) => (
             <SecondaryCard
-              onPress={() => handleDeleteExpense(item._id)}
-              key={item.id}
+              onPress={() => handleExpense(item)}
+              key={item._id}
               expense={item}
             />
           )}
         />
       </MoneyContent>
+      <Portal>
+        <OptionsModal modalRef={modalRef} expense={expense} />
+      </Portal>
     </Container>
   );
 };

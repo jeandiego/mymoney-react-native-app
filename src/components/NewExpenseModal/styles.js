@@ -45,3 +45,10 @@ export const CurrencyInputMoney = styled(CurrencyInput).attrs((p) => ({
   font-family: ${(p) => fonts[p.weight] || 'Poppins-Regular'};
   font-size: ${(p) => p.size || 16}px;
 `;
+
+export const DateButton = styled.TouchableOpacity`
+  padding: 15px;
+  padding-left: 0px;
+  border-bottom-width: 3px;
+  border-bottom-color: ${({ theme }) => theme.colors.opacity};
+`;

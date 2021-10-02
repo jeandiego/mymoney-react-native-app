@@ -1,11 +1,14 @@
 /* eslint-disable react/jsx-no-bind */
-import React, { useContext, useEffect } from 'react';
-import { deleteExpense, getExpenses } from '~/controller/expenseController';
+import React, { useContext, useEffect, useRef } from 'react';
+import { getExpenses } from '~/controller/expenseController';
 import { GlobalContext } from '~/providers';
 import HomeView from './view';
 
-const Home = () => {
-  const { expenses, setExpenses } = useContext(GlobalContext);
+const Home = ({ openOptionsModal }) => {
+  const { expense, setExpense, expenses, setExpenses } =
+    useContext(GlobalContext);
+
+  const modalizeRef = useRef(null);
 
   async function Initicalize() {
     const userExpenses = await getExpenses();
@@ -13,8 +16,9 @@ const Home = () => {
     setExpenses(userExpenses);
   }
 
-  async function handleDeleteExpense(id) {
-    await deleteExpense(id);
+  function handleExpense(_expense) {
+    setExpense(_expense);
+    modalizeRef?.current.open();
   }
 
   useEffect(() => {
@@ -22,7 +26,13 @@ const Home = () => {
   }, []);
 
   return (
-    <HomeView expenses={expenses} handleDeleteExpense={handleDeleteExpense} />
+    <HomeView
+      expenses={expenses}
+      handleExpense={handleExpense}
+      onPress={openOptionsModal}
+      modalRef={modalizeRef}
+      expense={expense}
+    />
   );
 };
 

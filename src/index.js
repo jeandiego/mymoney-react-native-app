@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { Host } from 'react-native-portalize';
 import GlobalStyle from './global/styles';
 import { Routes } from './routes';
 import './configs/reactotron';
@@ -18,8 +19,10 @@ const App = () => {
     <GlobalStyle>
       <GlobalProvider>
         <AuthProvider>
-          <Routes openExpenseModal={onOpen} />
-          <NewExpenseModal modalRef={modalizeRef} />
+          <Host>
+            <Routes openExpenseModal={onOpen} openOptionsModal={onOpen} />
+            <NewExpenseModal modalRef={modalizeRef} />
+          </Host>
         </AuthProvider>
       </GlobalProvider>
     </GlobalStyle>

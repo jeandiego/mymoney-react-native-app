@@ -12,8 +12,8 @@ const PrimaryCard = ({ item, title }) => {
   const { t } = useTranslation();
   const { expenses } = useContext(GlobalContext);
 
-  const totalExpenses = expenses?.reduce(
-    (totalExpense, expense) => totalExpense + expense.value,
+  const totalExpenses = expenses.reduce(
+    (totalExpense, expense) => totalExpense + expense?.value || 0,
     0,
   );
 

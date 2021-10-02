@@ -4,7 +4,47 @@
     "REGION": "BR",
     "REGION_MASK": "pt-BR",
     "MONEY": {
-      "CURRENCY": "R$ "
+      "CURRENCY": "$",
+      "TYPE_INCOME": "Ingresos",
+      "TYPE_WITHDRAW": "Gastos"
+    },
+    "HOME": {
+      "RELEASES": "Últimos lanzamientos"
+    },
+    "SIGNIN": {
+      "DESCRIPTION": "Controla tu \n gastos \n de moda muy simple",
+      "INSTRUCTIONS": "Crea tu cuenta de una manera \n cómoda y rápida",
+      "USER_PLACEHOLDER": "Ingrese su nombre",
+      "USER_LABEL": "Tu nombre",
+      "EMAIL_LABEL": "Ingrese su correo electrónico",
+      "EMAIL_PLACEHOLDER": "yourmail@email.com"
+    },
+    "WELCOME": {
+      "BUTTON_START": "Empiece ahora"
+    },
+    "SIGNIN_BUTTON_REGISTER": "Registrarse",
+    "SIGNIN_WELCOME": "Bienvenido",
+    "SIGNIN_DESCRIPTION": "Regístrese y comience a usar ahora mismo",
+    "ADD": {
+      "PLACEHOLDER_VALUE": "$ 0,00",
+      "ITEM" : "Descripción",
+      "PLACEHOLDER_ITEM": "Agregar descripción de la versión",
+      "ADDITIONAL_INFO": "Información adicional",
+      "PLACEHOLDER_ADDITIONAL_INFO": "Agregar nota",
+      "DATE": "Fecha",
+      "PLACEHOLDER_DATE": "30/09/2021",
+      "TITLE": "Agregar un gasto",
+      "BUTTON_ADD": "Agregar gasto",
+      "BUTTON_EDITING": "Guardar cambios",
+      "EDITING": "Editar gastos"
+    },
+    "RELEASES": {
+      "TITLE": "Tus lanzamientos"
+    },
+    "OPTIONS": {
+      "HEADER": "Opciones",
+      "EDIT": "Editar gastos",
+      "DELETE": "Eliminar gasto"
     }
   }
 }

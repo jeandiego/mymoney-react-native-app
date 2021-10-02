@@ -34,10 +34,17 @@
       "DATE": "Data",
       "PLACEHOLDER_DATE": "30/09/2021",
       "TITLE": "Adicionar uma despesa",
-      "BUTTON_ADD": "Adicionar despesa"
+      "BUTTON_ADD": "Adicionar despesa",
+      "BUTTON_EDITING": "Salvar alterações",
+      "EDITING": "Editar despesa"
     },
     "RELEASES": {
       "TITLE": "Seus lançamentos"
+    },
+    "OPTIONS": {
+      "HEADER": "Opções",
+      "EDIT": "Editar despesa",
+      "DELETE": "Remover despesa"
     }
   }
 }

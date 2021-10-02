@@ -8,17 +8,14 @@ import api, { configureAuthHeader } from '~/api';
 export const AuthContext = createContext([]);
 
 function AuthProvider({ children }) {
-  const [user, setUser] = useState({});
-  const [loadingUserStorage, setLoadingUserStorage] = useState(true);
+  const [user, setUser] = useState();
 
   async function signInWithEmail(username, userEmail) {
     try {
       const results = await api.get(`/start/${userEmail}`);
-
-      const userInfo = { ...results.data, username };
-
+      const userInfo = await { ...results.data, username };
+      configureAuthHeader(userInfo?.token);
       setUser(userInfo);
-
       await AsyncStorage.setItem(userStorageKey, JSON.stringify(userInfo));
     } catch (error) {
       throw new Error(error);
@@ -29,25 +26,18 @@ function AuthProvider({ children }) {
     const userStoraged = await AsyncStorage.getItem(userStorageKey);
 
     if (userStoraged) {
-      const userLogged = JSON.parse(userStoraged);
+      const userLogged = await JSON.parse(userStoraged);
+      configureAuthHeader(userLogged?.token);
       setUser(userLogged);
     }
-    setLoadingUserStorage(false);
   }
 
   useEffect(() => {
     loadUserStorageData();
   }, []);
 
-  useEffect(() => {
-    if (user) {
-      configureAuthHeader(user?.token);
-    }
-  }, [user]);
-
   return (
-    <AuthContext.Provider
-      value={{ user, loadingUserStorage, setUser, signInWithEmail }}>
+    <AuthContext.Provider value={{ user, setUser, signInWithEmail }}>
       {children}
     </AuthContext.Provider>
   );

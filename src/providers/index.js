@@ -4,15 +4,18 @@ export const GlobalContext = createContext({});
 
 const GlobalProvider = ({ children }) => {
   const [expenses, setExpenses] = useState([]);
-  const [refresh, setRefresh] = useState(false);
+  const [expense, setExpense] = useState();
+  const [isEditing, setIsEditing] = useState(false);
 
   return (
     <GlobalContext.Provider
       value={{
+        isEditing,
+        setIsEditing,
         expenses,
         setExpenses,
-        refresh,
-        setRefresh,
+        expense,
+        setExpense,
       }}>
       {children}
     </GlobalContext.Provider>

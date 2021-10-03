@@ -6,5 +6,5 @@ export const Container = styled.TouchableOpacity.attrs({
   flex: 1;
   margin: 8px;
   padding: 24px 16px;
-  background: ${({ theme }) => theme.colors.shape};
+  background: ${({ theme }) => theme.colors.card_background};
 `;

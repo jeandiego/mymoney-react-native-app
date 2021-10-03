@@ -8,7 +8,7 @@ import { Portal } from 'react-native-portalize';
 import MoneyText from '~/components/MoneyText';
 import MoneyContent from '~/components/MoneyView/Content';
 import SecondaryCard from '~/components/SecondaryCard';
-import { Container } from './styles';
+import { Container, HeaderView } from './styles';
 import OptionsModal from '~/components/OptionsModal';
 import SearchBar from '~/components/SearchBar';
 
@@ -18,11 +18,7 @@ const ReleasesView = ({ expense, expenses, handleExpense, modalizeRef }) => {
 
   return (
     <Container>
-      <MoneyContent
-        background="primary"
-        pTop={insets.top}
-        pBottom={insets.bottom + 16}
-        pHorizontal={16}>
+      <HeaderView safeArea={insets}>
         <MoneyText
           size={RFValue(22)}
           fontWeight="medium"
@@ -30,7 +26,7 @@ const ReleasesView = ({ expense, expenses, handleExpense, modalizeRef }) => {
           pTop={8}>
           {t('RELEASES.TITLE')}
         </MoneyText>
-      </MoneyContent>
+      </HeaderView>
       <SearchBar />
       <MoneyContent pVertical={24} pHorizontal={16} flex={1}>
         <FlatList

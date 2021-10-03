@@ -2,14 +2,13 @@ export const common = {
   white: '#FFFFFF',
   black: '#000000',
 
-  opacity: 'rgba(0,0,0,0.1)',
   opacityWhite: 'rgba(255,255,255,0.56)',
 };
 
 export const lightTheme = {
   ...common,
 
-  primary: '#5636D3',
+  primary: '#002780',
 
   secondary: '#FF872C',
   secondary_light: 'rgba(255, 135, 44, 0.3)',
@@ -27,20 +26,24 @@ export const lightTheme = {
   title: '#363F5F',
   text: '#969CB2',
   background: '#F0F2F5',
+  card_background: '#FFFFFF',
 
-  gradient01: '#002780',
-  gradient02: '#2A80D1',
+  gradient01: '#2A80D1',
+  gradient02: '#002780',
 
-  gradiente03: '#32DF94',
+  gradient03: '#32DF94',
   gradient04: '#35BCD9',
 
+  disabled: '#CECECE',
+
   shadow: 'rgba(0,0,0,0.4)',
+  opacity: 'rgba(0,0,0,0.1)',
 };
 
 export const darkTheme = {
   ...common,
 
-  primary: '#5636D3',
+  primary: '#35BCD9',
 
   secondary: '#FF872C',
   secondary_light: 'rgba(255, 135, 44, 0.3)',
@@ -49,21 +52,25 @@ export const darkTheme = {
   positive_light: '#C7F1D1',
 
   negative: '#CA4159',
-  negative_light: '#F3BABA',
+  negative_light: 'rgba(232, 63, 91, 0.1)',
 
   regular: '#30B8D6',
   regular_light: '#BAECF3',
 
-  shape: '#1F1E25',
-  title: '#363F5F',
-  text: '#969CB2',
+  shape: '#FFFFFF',
+  title: '#FFFFFF',
+  text: '#B4B4B4',
   background: '#121015',
+  card_background: '#1F1E25',
 
-  gradient01: '#002780',
-  gradient02: '#2A80D1',
+  gradient01: '#044158',
+  gradient02: '#0D041A',
 
   gradiente03: '#32DF94',
   gradient04: '#35BCD9',
 
+  disabled: '#CECECE',
+
   shadow: 'rgba(0,0,0,0.4)',
+  opacity: 'rgba(255,255,255, 0.15)',
 };

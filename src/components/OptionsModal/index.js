@@ -24,7 +24,7 @@ const OptionsModal = ({ modalRef, expense }) => {
       modalHeight={RFPercentage(30)}
       disableScrollIfPossible
       modalStyle={{
-        backgroundColor: colors.shape,
+        backgroundColor: colors.card_background,
       }}
       HeaderComponent={
         <HeaderView>

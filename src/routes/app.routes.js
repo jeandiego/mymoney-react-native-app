@@ -12,12 +12,14 @@ const Tab = createBottomTabNavigator();
 
 export function AppRoutes({ openExpenseModal }) {
   const {
-    colors: { primary, text },
+    colors: { primary, text, card_background },
   } = useContext(ThemeContext);
 
   return (
     <Tab.Navigator
+      barStyle={{}}
       screenOptions={({ route }) => ({
+        tabBarStyle: { backgroundColor: card_background },
         tabBarIcon: ({ focused }) => {
           switch (route.name) {
             case 'Home':
@@ -44,6 +46,7 @@ export function AppRoutes({ openExpenseModal }) {
         tabBarActiveTintColor: primary,
         tabBarInactiveTintColor: text,
         tabBarShowLabel: false,
+        tabBarBackgroundColor: card_background,
       })}>
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen

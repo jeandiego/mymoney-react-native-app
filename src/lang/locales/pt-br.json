@@ -12,7 +12,7 @@
       "RELEASES": "Últimos lançamentos"
     },
     "SIGNIN": {
-      "DESCRIPTION": " Controle suas \n finanças de maneira \n rápida e prática",
+      "DESCRIPTION": "Controle suas \n despesas de forma \n muito simples",
       "INSTRUCTIONS": "Crie sua conta de um jeito \n fácil e rápido",
       "USER_PLACEHOLDER": "Digite seu nome",
       "USER_LABEL": "Seu nome",
@@ -45,6 +45,13 @@
       "HEADER": "Opções",
       "EDIT": "Editar despesa",
       "DELETE": "Remover despesa"
+    },
+    "RELEASE": {
+      "SEARCH_PLACEHOLDER": "Procurar uma despesa..."
+    },
+    "ALERT": {
+      "ERROR1": "Verifique todas as informações",
+      "ERROR2": "Algo de errado ao editar sua despesa"
     }
   }
 }

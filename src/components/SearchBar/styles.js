@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   margin: 0 16px;
-  background: ${({ theme }) => theme.colors.shape};
+  background: ${({ theme }) => theme.colors.card_background};
   margin-top: -25px;
   padding: 4px 8px;
   flex-direction: row;

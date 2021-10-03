@@ -1,12 +1,16 @@
 import { KeyboardAvoidingView, Platform } from 'react-native';
 import CurrencyInput from 'react-native-currency-input';
+import LinearGradient from 'react-native-linear-gradient';
 import styled from 'styled-components/native';
 import { fonts } from '~/global/styles/fonts';
 
-export const HeaderView = styled.View`
+export const HeaderView = styled(LinearGradient).attrs((p) => ({
+  colors: [p.theme.colors.gradient01, p.theme.colors.gradient02],
+  start: { x: 0, y: 0.5 },
+  end: { x: 1.5, y: 0 },
+}))`
   justify-content: center;
   align-items: center;
-  background: ${({ theme }) => theme.colors.primary};
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 `;

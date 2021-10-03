@@ -27,7 +27,7 @@
     "SIGNIN_DESCRIPTION": "Regístrese y comience a usar ahora mismo",
     "ADD": {
       "PLACEHOLDER_VALUE": "$ 0,00",
-      "ITEM" : "Descripción",
+      "ITEM": "Descripción",
       "PLACEHOLDER_ITEM": "Agregar descripción de la versión",
       "ADDITIONAL_INFO": "Información adicional",
       "PLACEHOLDER_ADDITIONAL_INFO": "Agregar nota",
@@ -45,6 +45,9 @@
       "HEADER": "Opciones",
       "EDIT": "Editar gastos",
       "DELETE": "Eliminar gasto"
+    },
+    "RELEASE": {
+      "SEARCH_PLACEHOLDER": "Busque un gasto ..."
     }
   }
 }

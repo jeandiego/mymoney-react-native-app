@@ -4,16 +4,14 @@ import { RFValue } from 'react-native-responsive-fontsize';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import ButtonHeader from '~/components/ButtonHeader';
-import GlobalContainer from '~/components/Container';
 import MoneyButton from '~/components/MoneyButton';
 import MoneyInput from '~/components/MoneyInput';
 import MoneyText from '~/components/MoneyText';
 import MoneyContent from '~/components/MoneyView/Content';
-import MoneyFooter from '~/components/MoneyView/Footer';
 import ArrowSvg from '~/assets/svgs/arrow-left.svg';
+import { Container, FooterView, HeaderView } from './styles';
 
 const SignInView = ({
-  isFocused,
   setUsername,
   setUserEmail,
   username,
@@ -33,14 +31,8 @@ const SignInView = ({
   };
 
   return (
-    <GlobalContainer background="background">
-      <MoneyContent
-        background="primary"
-        mTop={-insets.top}
-        pTop={56}
-        pBottom={24}
-        pHorizontal={16}
-        flexDir="column">
+    <Container safeArea={insets}>
+      <HeaderView safeArea={insets}>
         <ButtonHeader onPress={goBack}>
           <ArrowSvg width={24} height={24} fill="white" />
         </ButtonHeader>
@@ -56,10 +48,10 @@ const SignInView = ({
             {t('SIGNIN_DESCRIPTION')}
           </MoneyText>
         </MoneyContent>
-      </MoneyContent>
+      </HeaderView>
 
       <MoneyContent flexDir="column" flex={1} pHorizontal={16} pVertical={24}>
-        <MoneyText size={14} color={isFocused ? 'primary' : 'text'}>
+        <MoneyText size={14} color={focus.name ? 'primary' : 'text'}>
           {t('SIGNIN.USER_LABEL')}
         </MoneyText>
         <MoneyInput
@@ -71,7 +63,7 @@ const SignInView = ({
           onChangeText={setUsername}
           autoCompleteType="name"
         />
-        <MoneyText size={14} color={isFocused ? 'primary' : 'text'} pTop={36}>
+        <MoneyText size={14} color={focus.email ? 'primary' : 'text'} pTop={36}>
           {t('SIGNIN.EMAIL_LABEL')}
         </MoneyText>
         <MoneyInput
@@ -86,13 +78,10 @@ const SignInView = ({
           keyboardType="email-address"
         />
       </MoneyContent>
-      <MoneyFooter
-        justify="flex-end"
-        width={100}
-        height={10}
-        flexDir="column"
-        pHorizontal={16}>
+      <FooterView safeArea={insets}>
         <MoneyButton
+          disabled={!username && !userEmail}
+          gradient
           background="primary"
           pVertical={16}
           color="shape"
@@ -101,8 +90,8 @@ const SignInView = ({
           onPress={onPress}>
           {t('SIGNIN_BUTTON_REGISTER')}
         </MoneyButton>
-      </MoneyFooter>
-    </GlobalContainer>
+      </FooterView>
+    </Container>
   );
 };
 

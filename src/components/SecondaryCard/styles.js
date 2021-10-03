@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const ExpenseCard = styled.TouchableOpacity`
-  background: ${({ theme }) => theme.colors.shape};
+  background: ${({ theme }) => theme.colors.card_background};
   padding: 16px;
   margin-bottom: 8px;
 `;

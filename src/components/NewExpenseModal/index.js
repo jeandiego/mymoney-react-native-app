@@ -69,7 +69,7 @@ const NewExpenseModal = ({ modalRef }) => {
       modalRef.current?.close();
       clearExpense();
     } else {
-      Alert.alert('Algo de errado ao editar');
+      Alert.alert(t('ALERT.ERROR2'));
     }
   };
 
@@ -91,7 +91,7 @@ const NewExpenseModal = ({ modalRef }) => {
       modalRef.current?.close();
       clearExpense();
     } else {
-      Alert.alert('Algo de errado');
+      Alert.alert(t('ALERT.ERROR1'));
     }
   };
 
@@ -117,7 +117,7 @@ const NewExpenseModal = ({ modalRef }) => {
       ref={modalRef}
       disableScrollIfPossible
       modalStyle={{
-        backgroundColor: themeContext.colors.background,
+        backgroundColor: themeContext.colors.card_background,
       }}
       HeaderComponent={
         <HeaderView>
@@ -149,7 +149,10 @@ const NewExpenseModal = ({ modalRef }) => {
       <ContentView>
         <ContentWrapper>
           <InputView>
-            <MoneyText size={14} fontWeight="medium" color="text">
+            <MoneyText
+              size={14}
+              fontWeight="medium"
+              color={focus.item ? 'primary' : 'text'}>
               {t('ADD.ITEM')}
             </MoneyText>
             <MoneyInput
@@ -170,7 +173,10 @@ const NewExpenseModal = ({ modalRef }) => {
             </DateButton>
           </InputView>
           <InputView>
-            <MoneyText size={14} fontWeight="medium" color="text">
+            <MoneyText
+              size={14}
+              fontWeight="medium"
+              color={focus.additional ? 'primary' : 'text'}>
               {t('ADD.ADDITIONAL_INFO')}
             </MoneyText>
             <MoneyInput

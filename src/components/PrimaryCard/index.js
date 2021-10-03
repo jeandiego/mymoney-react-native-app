@@ -8,7 +8,7 @@ import MoneyContent from '../MoneyView/Content';
 
 import { Container } from './styles';
 
-const PrimaryCard = ({ item, title }) => {
+const PrimaryCard = ({ item, title, ...rest }) => {
   const { t } = useTranslation();
   const { expenses } = useContext(GlobalContext);
 
@@ -18,7 +18,7 @@ const PrimaryCard = ({ item, title }) => {
   );
 
   return (
-    <Container>
+    <Container {...rest}>
       <MoneyContent
         flexDir="row"
         justify="space-between"

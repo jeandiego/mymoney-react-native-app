@@ -1,14 +1,14 @@
 /* eslint-disable react/jsx-no-bind */
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { getExpenses } from '~/controller/expenseController';
 import { GlobalContext } from '~/providers';
 import HomeView from './view';
 
-const Home = ({ openOptionsModal }) => {
-  const { expense, setExpense, expenses, setExpenses } =
+const Home = () => {
+  const { expense, expenses, setExpenses, modalizeRef, handleExpense } =
     useContext(GlobalContext);
-
-  const modalizeRef = useRef(null);
+  const navigation = useNavigation();
 
   async function Initicalize() {
     const userExpenses = await getExpenses();
@@ -16,9 +16,8 @@ const Home = ({ openOptionsModal }) => {
     setExpenses(userExpenses);
   }
 
-  function handleExpense(_expense) {
-    setExpense(_expense);
-    modalizeRef?.current.open();
+  function handleAllExpenses() {
+    navigation.navigate('Releases');
   }
 
   useEffect(() => {
@@ -29,9 +28,9 @@ const Home = ({ openOptionsModal }) => {
     <HomeView
       expenses={expenses}
       handleExpense={handleExpense}
-      onPress={openOptionsModal}
       modalRef={modalizeRef}
       expense={expense}
+      handleAllExpenses={handleAllExpenses}
     />
   );
 };

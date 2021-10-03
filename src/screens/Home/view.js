@@ -14,7 +14,13 @@ import MoneyContent from '~/components/MoneyView/Content';
 import SecondaryCard from '~/components/SecondaryCard';
 import OptionsModal from '~/components/OptionsModal';
 
-const HomeView = ({ expenses, handleExpense, modalRef, expense }) => {
+const HomeView = ({
+  expenses,
+  handleExpense,
+  modalRef,
+  expense,
+  handleAllExpenses,
+}) => {
   const insets = useSafeAreaInsets();
   const { t } = useTranslation();
 
@@ -27,7 +33,7 @@ const HomeView = ({ expenses, handleExpense, modalRef, expense }) => {
             key={type.id}
             item={type}
             title={type.title}
-            onPress={() => {}}
+            onPress={handleAllExpenses}
           />
         ))}
       </MoneyContent>

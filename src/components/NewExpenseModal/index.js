@@ -47,8 +47,30 @@ const NewExpenseModal = ({ modalRef }) => {
   }
 
   const handleEditExpense = async () => {
-    modalRef.current?.close(setIsEditing(false));
-    editExpense(expense?._id);
+    const editedExpense = {
+      date: dayjs(date).format('YYYY-MM-DD'),
+      item,
+      value,
+      additionalInfo: { notes },
+    };
+
+    const results = await editExpense(expense._id, editedExpense);
+
+    if (results.shouldContinue) {
+      setExpenses((expenses) =>
+        expenses
+          .map((_expense) =>
+            _expense._id === expense._id
+              ? { ...editedExpense, _id: expense._id }
+              : _expense,
+          )
+          .sort((a, b) => dayjs(b.date).diff(dayjs(a.date), 'd')),
+      );
+      modalRef.current?.close();
+      clearExpense();
+    } else {
+      Alert.alert('Algo de errado ao editar');
+    }
   };
 
   const handleNewExpense = async () => {
@@ -61,10 +83,11 @@ const NewExpenseModal = ({ modalRef }) => {
     const results = await createNewExpense(newExpense);
 
     if (results.shouldContinue) {
-      setExpenses((expenses) => [
-        { ...newExpense, _id: results.id },
-        ...expenses,
-      ]);
+      setExpenses((expenses) =>
+        [{ ...newExpense, _id: results.id }, ...expenses].sort((a, b) =>
+          dayjs(b.date).diff(dayjs(a.date), 'd'),
+        ),
+      );
       modalRef.current?.close();
       clearExpense();
     } else {
@@ -81,10 +104,6 @@ const NewExpenseModal = ({ modalRef }) => {
     } else {
       clearExpense();
     }
-
-    return function cleanup() {
-      clearExpense();
-    };
   }, [isEditing]);
 
   return (
@@ -151,7 +170,9 @@ const NewExpenseModal = ({ modalRef }) => {
             </DateButton>
           </InputView>
           <InputView>
-            <MoneyText size={14} fontWeight="medium" color="text" />
+            <MoneyText size={14} fontWeight="medium" color="text">
+              {t('ADD.ADDITIONAL_INFO')}
+            </MoneyText>
             <MoneyInput
               multiline
               value={notes}

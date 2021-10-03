@@ -14,7 +14,7 @@ export function Routes({ openExpenseModal }) {
 
   return (
     <NavigationContainer ref={navigationRef}>
-      {user._id ? (
+      {user ? (
         <AppRoutes openExpenseModal={openExpenseModal} />
       ) : (
         <AuthRoutes />

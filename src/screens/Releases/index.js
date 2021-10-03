@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { GlobalContext } from '~/providers';
 import ReleasesView from './view';
 
 const Releases = () => {
-  return <ReleasesView />;
+  const { expense, expenses, modalizeRef, handleExpense } =
+    useContext(GlobalContext);
+
+  return (
+    <ReleasesView
+      expense={expense}
+      expenses={expenses}
+      modalizeRef={modalizeRef}
+      handleExpense={handleExpense}
+    />
+  );
 };
 
 export default Releases;

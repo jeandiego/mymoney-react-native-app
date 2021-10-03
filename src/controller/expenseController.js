@@ -1,3 +1,5 @@
+/* eslint-disable no-underscore-dangle */
+import dayjs from 'dayjs';
 import api from '~/api';
 
 export async function createNewExpense(expense) {
@@ -12,9 +14,9 @@ export async function createNewExpense(expense) {
 
 export async function getExpenses() {
   try {
-    const response = await api.get('expenses?page=1&perPage=10');
+    const response = await api.get('expenses?page=1&perPage=20');
 
-    return response.data;
+    return response.data.sort((a, b) => dayjs(b.date).diff(dayjs(a.date), 'd'));
   } catch (error) {
     return console.log(error);
   }
@@ -22,7 +24,7 @@ export async function getExpenses() {
 
 export async function deleteExpense(id) {
   try {
-    const response = await api.delete(`/expenses/${id}`);
+    const response = await api.delete(`expenses/${id}`);
 
     return response;
   } catch (error) {
@@ -30,12 +32,12 @@ export async function deleteExpense(id) {
   }
 }
 
-export async function editExpense(id) {
+export async function editExpense(id, expense) {
   try {
-    const response = await api.put(`expense/${id}`);
+    await api.put(`expenses/${id}`, expense);
 
-    return console.log(response);
+    return { shouldContinue: true };
   } catch (error) {
-    return console.log(error);
+    return { shouldContinue: false };
   }
 }

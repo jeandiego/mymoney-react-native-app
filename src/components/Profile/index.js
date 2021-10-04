@@ -1,6 +1,7 @@
 import React, { useContext, useRef } from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Portal } from 'react-native-portalize';
+import { useTranslation } from 'react-i18next';
 import MoneyText from '../MoneyText';
 import { ButtonView, Container } from './styles';
 import MoneyContent from '../MoneyView/Content';
@@ -15,6 +16,7 @@ const Profile = () => {
   const {
     user: { username },
   } = useAuth();
+  const { t } = useTranslation();
 
   const modalizeRef = useRef(null);
 
@@ -30,7 +32,7 @@ const Profile = () => {
         justify="space-between"
         alignItem="center">
         <MoneyText color="shape" size={24} fontWeight="regular">
-          Olá
+          {t('HOME.HELLO')}
           <MoneyText color="shape" size={24} fontWeight="bold">
             {` ${username}`}
           </MoneyText>

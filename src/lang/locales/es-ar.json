@@ -9,7 +9,8 @@
       "TYPE_WITHDRAW": "Gastos"
     },
     "HOME": {
-      "RELEASES": "Últimos lanzamientos"
+      "RELEASES": "Últimos lanzamientos",
+      "HELLO": "Hola"
     },
     "SIGNIN": {
       "DESCRIPTION": "Controla tu \n gastos \n de moda muy simple",

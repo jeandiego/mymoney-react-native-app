@@ -17,7 +17,7 @@ export const HeaderView = styled.View`
 export const FooterView = styled.View`
   width: 100%;
   height: 30%;
-  background: white;
+  background: ${({ theme }) => theme.colors.shape};
 `;
 
 export const AbsoluteView = styled.TouchableOpacity`

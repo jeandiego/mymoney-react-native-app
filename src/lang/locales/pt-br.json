@@ -9,7 +9,8 @@
       "TYPE_WITHDRAW": "Despesas"
     },
     "HOME": {
-      "RELEASES": "Últimos lançamentos"
+      "RELEASES": "Últimos lançamentos",
+      "HELLO": "Olá"
     },
     "SIGNIN": {
       "DESCRIPTION": "Controle suas \n despesas de forma \n muito simples",

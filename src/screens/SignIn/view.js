@@ -90,6 +90,7 @@ const SignInView = ({
           background="primary"
           pVertical={16}
           color="shape"
+          pBottom={8}
           size={RFValue(16)}
           fontWeight="medium"
           onPress={onPress}>

@@ -23,7 +23,8 @@ const ReleasesView = ({ expense, expenses, handleExpense, modalizeRef }) => {
           size={RFValue(22)}
           fontWeight="medium"
           color="shape"
-          pTop={8}>
+          pTop={8}
+          pBottom={8}>
           {t('RELEASES.TITLE')}
         </MoneyText>
       </HeaderView>

@@ -20,13 +20,14 @@ const HomeView = ({
   modalRef,
   expense,
   handleAllExpenses,
+  handleRegionLanguage,
 }) => {
   const insets = useSafeAreaInsets();
   const { t } = useTranslation();
 
   return (
     <Container safeArea={insets}>
-      <Header />
+      <Header onPress={handleRegionLanguage} />
       <MoneyContent justify="space-between" mTop={-50} pHorizontal={8}>
         {types.map((type) => (
           <PrimaryCard

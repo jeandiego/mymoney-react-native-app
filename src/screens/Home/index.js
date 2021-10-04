@@ -4,10 +4,18 @@ import { useNavigation } from '@react-navigation/native';
 import { getExpenses } from '~/controller/expenseController';
 import { GlobalContext } from '~/providers';
 import HomeView from './view';
+import i18n from '~/lang';
 
 const Home = () => {
-  const { expense, expenses, setExpenses, modalizeRef, handleExpense } =
-    useContext(GlobalContext);
+  const {
+    language,
+    setLanguage,
+    expense,
+    expenses,
+    setExpenses,
+    modalizeRef,
+    handleExpense,
+  } = useContext(GlobalContext);
   const navigation = useNavigation();
 
   async function Initicalize() {

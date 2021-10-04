@@ -6,6 +6,7 @@ const GlobalProvider = ({ children }) => {
   const [expenses, setExpenses] = useState([]);
   const [expense, setExpense] = useState();
   const [isEditing, setIsEditing] = useState(false);
+  const [language, setLanguage] = useState('PT-BR');
   const modalizeRef = useRef(null);
 
   function handleExpense(_expense) {
@@ -16,6 +17,8 @@ const GlobalProvider = ({ children }) => {
   return (
     <GlobalContext.Provider
       value={{
+        language,
+        setLanguage,
         isEditing,
         setIsEditing,
         expenses,

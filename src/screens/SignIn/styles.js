@@ -22,6 +22,7 @@ export const HeaderView = styled(LinearGradient).attrs((p) => ({
 export const ContentView = styled.View``;
 
 export const FooterView = styled.View`
+  background: ${({ theme }) => theme.colors.card_background};
   height: 20%;
   padding: 0 16px;
   align-items: flex-end;

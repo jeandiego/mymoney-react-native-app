@@ -19,3 +19,15 @@ export const FooterView = styled.View`
   height: 30%;
   background: white;
 `;
+
+export const AbsoluteView = styled.TouchableOpacity`
+  position: absolute;
+  top: ${(p) => p.safeArea.top}px;
+  right: 16px;
+  z-index: 1;
+  background: ${(p) => p.theme.colors.opacity};
+  padding: 8px 12px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+`;

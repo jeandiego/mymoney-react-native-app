@@ -1,18 +1,36 @@
-import React from 'react';
+import React, { useContext, useRef } from 'react';
 import { RFValue } from 'react-native-responsive-fontsize';
 
 import { useTranslation } from 'react-i18next';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import LogoSvg from '~/assets/svgs/bill.svg';
 import MoneyText from '~/components/MoneyText';
 import MoneyContent from '~/components/MoneyView/Content';
 import MoneyButton from '~/components/MoneyButton';
-import { Container, FooterView, HeaderView } from './styles';
+import { AbsoluteView, Container, FooterView, HeaderView } from './styles';
+import LanguageModal from '~/components/LanguageModal';
+import { GlobalContext } from '~/providers';
+import GlobeSvg from '~/assets/svgs/globe.svg';
 
 const StartView = ({ handleGoToSignIn }) => {
+  const { language } = useContext(GlobalContext);
+
   const { t } = useTranslation();
+  const insets = useSafeAreaInsets();
+  const modalizeRef = useRef(null);
+
+  function handleSelectLanguage() {
+    modalizeRef.current?.open();
+  }
 
   return (
     <Container>
+      <AbsoluteView safeArea={insets} onPress={handleSelectLanguage}>
+        <MoneyText size={12} fontWeight="bold" color="shape" pRight={8}>
+          {language}
+        </MoneyText>
+        <GlobeSvg width={24} height={24} fill="white" />
+      </AbsoluteView>
       <HeaderView>
         <MoneyContent
           pHorizontal={16}
@@ -66,6 +84,7 @@ const StartView = ({ handleGoToSignIn }) => {
           </MoneyButton>
         </MoneyContent>
       </FooterView>
+      <LanguageModal modalRef={modalizeRef} />
     </Container>
   );
 };

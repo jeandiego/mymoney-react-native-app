@@ -3,12 +3,12 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Container } from './styles';
 import Profile from '../Profile';
 
-const Header = () => {
+const Header = ({ onPress }) => {
   const insets = useSafeAreaInsets();
 
   return (
     <Container safeArea={insets}>
-      <Profile />
+      <Profile onPress={onPress} />
     </Container>
   );
 };

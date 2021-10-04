@@ -50,7 +50,12 @@ const SignInView = ({
         </MoneyContent>
       </HeaderView>
 
-      <MoneyContent flexDir="column" flex={1} pHorizontal={16} pVertical={24}>
+      <MoneyContent
+        flexDir="column"
+        flex={1}
+        pHorizontal={16}
+        pVertical={24}
+        background="card_background">
         <MoneyText size={14} color={focus.name ? 'primary' : 'text'}>
           {t('SIGNIN.USER_LABEL')}
         </MoneyText>

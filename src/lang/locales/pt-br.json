@@ -58,6 +58,9 @@
       "HEADER": "Trocar idioma",
       "BRAZIL": "Português, Brasil",
       "ARGENTINA": "Espanhol, Argentina"
+    },
+    "EMPTY": {
+      "MESSAGE": "Você ainda não realizou nenhum lançamento"
     }
   }
 }

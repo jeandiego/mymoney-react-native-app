@@ -1,20 +1,25 @@
 /* eslint-disable no-underscore-dangle */
-import React from 'react';
+import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FlatList } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Portal } from 'react-native-portalize';
+import { ThemeContext } from 'styled-components';
 import MoneyText from '~/components/MoneyText';
 import MoneyContent from '~/components/MoneyView/Content';
 import SecondaryCard from '~/components/SecondaryCard';
 import { Container, HeaderView } from './styles';
 import OptionsModal from '~/components/OptionsModal';
 import SearchBar from '~/components/SearchBar';
+import { EmptyComponent } from '~/components/EmptyComponent';
 
 const ReleasesView = ({ expense, expenses, handleExpense, modalizeRef }) => {
   const { t } = useTranslation();
   const insets = useSafeAreaInsets();
+  const {
+    colors: { opacity },
+  } = useContext(ThemeContext);
 
   return (
     <Container>
@@ -39,6 +44,13 @@ const ReleasesView = ({ expense, expenses, handleExpense, modalizeRef }) => {
               onPress={() => handleExpense(item)}
               key={item._id}
               expense={item}
+            />
+          )}
+          ListEmptyComponent={() => (
+            <EmptyComponent
+              size={120}
+              color={opacity}
+              message={t('EMPTY.MESSAGE')}
             />
           )}
         />

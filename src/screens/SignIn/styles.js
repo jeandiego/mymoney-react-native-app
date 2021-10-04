@@ -27,5 +27,5 @@ export const FooterView = styled.View`
   padding: 0 16px;
   align-items: flex-end;
   justify-content: flex-end;
-  padding-bottom: ${(p) => p.safeArea.bottom}px;
+  padding-bottom: ${(p) => p.safeArea.bottom + 8}px;
 `;

@@ -1,10 +1,11 @@
 /* eslint-disable no-underscore-dangle */
-import React from 'react';
+import React, { useContext } from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { FlatList } from 'react-native';
 import { Portal } from 'react-native-portalize';
+import { ThemeContext } from 'styled-components';
 import Header from '~/components/Header';
 import PrimaryCard from '~/components/PrimaryCard';
 import { Container } from './styles';
@@ -13,6 +14,7 @@ import MoneyText from '~/components/MoneyText';
 import MoneyContent from '~/components/MoneyView/Content';
 import SecondaryCard from '~/components/SecondaryCard';
 import OptionsModal from '~/components/OptionsModal';
+import { EmptyComponent } from '~/components/EmptyComponent';
 
 const HomeView = ({
   expenses,
@@ -24,6 +26,9 @@ const HomeView = ({
 }) => {
   const insets = useSafeAreaInsets();
   const { t } = useTranslation();
+  const {
+    colors: { opacity },
+  } = useContext(ThemeContext);
 
   return (
     <Container safeArea={insets}>
@@ -53,6 +58,13 @@ const HomeView = ({
               onPress={() => handleExpense(item)}
               key={item._id}
               expense={item}
+            />
+          )}
+          ListEmptyComponent={() => (
+            <EmptyComponent
+              size={120}
+              color={opacity}
+              message={t('EMPTY.MESSAGE')}
             />
           )}
         />

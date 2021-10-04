@@ -52,6 +52,11 @@
     "ALERT": {
       "ERROR1": "Verifique todas as informações",
       "ERROR2": "Algo de errado ao editar sua despesa"
+    },
+    "LANGUAGE": {
+      "HEADER": "Trocar idioma",
+      "BRAZIL": "Português, Brasil",
+      "ARGENTINA": "Espanhol, Argentina"
     }
   }
 }

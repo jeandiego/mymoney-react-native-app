@@ -48,6 +48,15 @@
     },
     "RELEASE": {
       "SEARCH_PLACEHOLDER": "Busque un gasto ..."
+    },
+    "ALERT": {
+      "ERROR1": "Verificar toda la información",
+      "ERROR2": "Se produjo un error al editar su gasto"
+    },
+    "LANGUAGE": {
+      "HEADER": "Cambiar idioma",
+      "BRASIL": "Portugués, Brasil",
+      "ARGENTINA": "Español, Argentina"
     }
   }
 }
